@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 import 'package:template_getx/app.dart';
 import 'package:star_menu/star_menu.dart';
-import 'package:template_getx/service/app.dart';
+import 'package:template_getx/services/app.dart';
 
 enum TabbarType { home, mine }
 
@@ -30,7 +30,7 @@ class _TabbarScaffoldState extends State<TabbarScaffold> {
       'title': '首页',
       'icon': 'home',
       'onTap': (BuildContext context) {
-        Get.toNamed(RouteNames.home);
+        Get.toNamed(Routes.HOME);
       },
     },
     {
@@ -40,7 +40,7 @@ class _TabbarScaffoldState extends State<TabbarScaffold> {
         // if (!ref.read(isLoggedProvider)) {
         //   context.push('/login');
         // } else {
-        Get.toNamed(RouteNames.mine);
+        Get.toNamed(Routes.MINE);
         // }
       },
     },
@@ -232,9 +232,6 @@ class _AppEventlistener extends HookWidget {
   Widget build(BuildContext context) {
     useEffect(() {
       final needLoginSub = AppService.bus.on<AppNeedToLogin>().listen((event) {
-        Get.routeTree.routes;
-        Get.routing.current;
-
         // if (GoRouter.of(context).location != '/login') {
         //   ref.read(authNotifierProvider.notifier).logout();
         //   context

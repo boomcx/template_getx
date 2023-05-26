@@ -27,7 +27,7 @@ class AppBarBackButton extends StatelessWidget {
           if (navigator.canPop()) {
             navigator.pop();
           } else {
-            Get.toNamed(RouteNames.home);
+            Get.offAllNamed(Routes.HOME);
           }
         },
       ),

@@ -8,7 +8,7 @@ export './network/repository.dart';
 export './support_files/theme.dart';
 export './support_files/assets.gen.dart';
 
-export './router/path.dart';
+export './app/routes/app_pages.dart';
 
 export './common/widgets/app_bar.dart';
 export './common/widgets/data_scaffold.dart';

@@ -6,8 +6,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:template_getx/app.dart';
 import 'package:template_getx/common/extensions/custom_scroll_extension.dart';
-import 'package:template_getx/router/router.dart';
-
 import 'service.dart';
 
 void main() async {
@@ -37,6 +35,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: appThemeData,
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
+      scrollBehavior: CustomScrollBehavior(),
+      routingCallback: (value) {
+        // 切换页面清空当前 Toast
+        Toast.hideLoading();
+      },
+      navigatorObservers: [
+        Toast.toastNavigatorObserver(),
+      ],
+      binds: [
+        // 挂载公共服务
+        Bind.put(AppService()),
+        Bind.put(UserService()),
+      ],
       debugShowCheckedModeBanner: false,
       locale: const Locale('zh', 'CN'),
       fallbackLocale: const Locale('zh', 'CN'),
@@ -49,27 +63,10 @@ class MyApp extends StatelessWidget {
         Locale('zh', 'CN'),
         Locale('en', 'US'),
       ],
-      initialBinding: _loadService(),
-      initialRoute: RouteNames.home,
-      getPages: GetRoutes.pages,
-      scrollBehavior: CustomScrollBehavior(),
-      routingCallback: (value) {
-        // 切换页面清空当前 Toast
-        Toast.toastNavigatorObserver();
-        Toast.hideLoading();
-      },
-      theme: appThemeData,
       defaultTransition: Transition.rightToLeft,
       builder: (context, child) {
         return Toast.init(context, child!);
       },
     );
-  }
-
-  Bindings _loadService() {
-    return BindingsBuilder(() {
-      Get.put(AppService());
-      Get.put(UserService());
-    });
   }
 }

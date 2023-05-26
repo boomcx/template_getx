@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-import '../service/user.dart';
+import '../services/user.dart';
 
 class NetInterceptor extends Interceptor {
   NetInterceptor();

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'app_bar_back_button.dart';
 
-class AAppBar extends StatelessWidget with PreferredSizeWidget {
+class AAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AAppBar({
     Key? key,
     this.leading,
