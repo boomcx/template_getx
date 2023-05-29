@@ -15,6 +15,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.systemOverlayStyle,
     this.backIconColor,
     this.actions,
+    this.isRootNavigator = false,
   }) : super(key: key);
 
   final Widget? leading;
@@ -25,6 +26,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool shadow;
   final SystemUiOverlayStyle? systemOverlayStyle;
   final Color? backIconColor;
+  final bool isRootNavigator;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
         titleSpacing: 0,
         leadingWidth: kMinInteractiveDimensionCupertino * 2,
         leading: _buildLeading(context),
+        automaticallyImplyLeading: !isRootNavigator,
         title: titleWidget ?? (title != null ? Text(title!) : null),
         systemOverlayStyle: systemOverlayStyle,
         actions: actions,
@@ -54,6 +57,7 @@ class AAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget? _buildLeading(BuildContext context) {
     if (leading != null) return leading;
+    if (isRootNavigator) return null;
     final route = ModalRoute.of(context);
     if (route is PageRoute && (route.canPop || route.fullscreenDialog)) {
       return AppBarBackButton(color: backIconColor);

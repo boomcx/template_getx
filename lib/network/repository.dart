@@ -1,7 +1,18 @@
 import 'package:dio/dio.dart';
+import 'package:template_getx/app.dart';
 
 import 'api_client.dart';
 import 'interceptor.dart';
+
+/// 统一处理错误信息
+void formatError(e) {
+  logger.d(e.toString());
+  if (e is Response) {
+    Toast.showError(e.statusMessage ?? '');
+    return;
+  }
+  Toast.showError('请求异常');
+}
 
 class NetRepository {
   /// 请求体 (如果域名不一致可以创建多个请求体进行区分)
@@ -19,7 +30,7 @@ class NetRepository {
 }
 
 final _devDomain = AppDomain(
-  host: 'http://www.xxx.com/api',
+  host: 'https://api.apiopen.top/api',
   pcHost: 'http://www.xxx.com ',
 );
 

@@ -10,7 +10,10 @@ class MineView extends GetView<MineController> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: AAppBar(title: 'MineView'),
+      appBar: AAppBar(
+        title: 'MineView',
+        isRootNavigator: true,
+      ),
       body: Center(
         child: Text(
           'MineView is working',

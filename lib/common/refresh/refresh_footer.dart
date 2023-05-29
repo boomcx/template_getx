@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
+import 'package:template_getx/app.dart';
 import '../widgets/app_progress_indicator.dart';
-import '../widgets/empty_data_view.dart';
+
+class RefreshFooter extends Footer {
+  const RefreshFooter({
+    super.triggerOffset = 70,
+    super.clamping = false,
+    super.processedDuration = const Duration(
+      milliseconds: 500,
+    ),
+    super.position = IndicatorPosition.above,
+    super.safeArea = false,
+    this.backgroundColor,
+  });
+
+  final Color? backgroundColor;
+
+  @override
+  Widget build(Object context, IndicatorState state) {
+    Widget child = const SizedBox();
+    return child;
+  }
+}
 
 class _NoMore extends StatelessWidget {
   const _NoMore();
@@ -10,6 +29,7 @@ class _NoMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       height: 50,
       alignment: Alignment.center,
       child: Text(
@@ -84,40 +104,3 @@ class _LoadingTapMore extends StatelessWidget {
         ));
   }
 }
-
-PagedChildBuilderDelegate<ItemType> pagedChildDelegate<ItemType>(
-  ItemWidgetBuilder<ItemType> builder, {
-  WidgetBuilder? loadingView,
-  WidgetBuilder? emptyView,
-  bool animateTransitions = false,
-}) =>
-    PagedChildBuilderDelegate<ItemType>(
-      itemBuilder: builder,
-      animateTransitions: animateTransitions,
-      firstPageErrorIndicatorBuilder:
-          emptyView ?? (context) => const DefaultEmptyDataView(),
-      firstPageProgressIndicatorBuilder:
-          loadingView ?? (context) => const LoadingEmptyDataView(),
-      noItemsFoundIndicatorBuilder:
-          emptyView ?? (context) => const DefaultEmptyDataView(),
-      newPageProgressIndicatorBuilder: (_) => const _Loading(),
-      noMoreItemsIndicatorBuilder: (_) => const _NoMore(),
-      newPageProgressManualBuilder: (_) => const _LoadingTapMore(),
-      newPageErrorIndicatorBuilder: (_) => const _LoadingTapMore(),
-    );
-
-// extension PagingControllerDelegateExt on PagingController {
-//   /// 构造加载视图配置
-//   PagedChildBuilderDelegate<ItemType> delegate<ItemType>(
-//     ItemWidgetBuilder<ItemType> builder, {
-//     WidgetBuilder? loadingView,
-//     WidgetBuilder? emptyView,
-//     bool animateTransitions = false,
-//   }) =>
-//       pagedChildDelegate(
-//         builder,
-//         loadingView: loadingView,
-//         emptyView: emptyView,
-//         animateTransitions: animateTransitions,
-//       );
-// }

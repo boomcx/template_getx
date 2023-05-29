@@ -40,7 +40,7 @@ class NetInterceptor extends Interceptor {
       );
       return;
     }
-    response.data = dataMap['data'];
+    response.data = dataMap['result'];
     handler.next(response);
   }
 }

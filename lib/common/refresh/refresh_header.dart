@@ -7,7 +7,7 @@ import 'package:simple_animations/simple_animations.dart';
 const _kRefreshText = 'REFRESHING';
 
 class RefreshHeader extends Header {
-  RefreshHeader({
+  const RefreshHeader({
     super.triggerOffset = 70,
     super.clamping = false,
     super.processedDuration = const Duration(
@@ -173,3 +173,4 @@ class _NameAnimation extends StatelessWidget {
     );
   }
 }
+

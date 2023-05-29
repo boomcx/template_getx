@@ -25,7 +25,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HOME,
-      participatesInRootNavigator: true,
+      // participatesInRootNavigator: true,
       transition: Transition.noTransition,
       page: () => const TabbarScaffold(
         type: TabbarType.home,
@@ -35,7 +35,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.MINE,
-      participatesInRootNavigator: true,
+      // participatesInRootNavigator: true,
       transition: Transition.noTransition,
       page: () => const TabbarScaffold(
         type: TabbarType.mine,
