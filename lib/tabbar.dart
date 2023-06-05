@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 import 'package:template_getx/app.dart';
 import 'package:star_menu/star_menu.dart';
+import 'package:template_getx/common/tools/mob_util.mixin.dart';
 import 'package:template_getx/services/app.dart';
 
 enum TabbarType { home, mine }
@@ -21,7 +23,7 @@ class TabbarScaffold extends StatefulWidget {
   State<TabbarScaffold> createState() => _TabbarScaffoldState();
 }
 
-class _TabbarScaffoldState extends State<TabbarScaffold> {
+class _TabbarScaffoldState extends State<TabbarScaffold> with MobUtilMixin {
   int _index = -1;
   List<Widget> _children = [];
 
@@ -51,6 +53,9 @@ class _TabbarScaffoldState extends State<TabbarScaffold> {
     super.initState();
     _children = List.generate(_tabList.length, (index) => const SizedBox());
     _updateChildren();
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      mobLinkMount();
+    });
   }
 
   void _updateChildren() {
@@ -121,7 +126,7 @@ class _SectorFabButton extends StatelessWidget {
         logger.i(index);
       },
       child: Container(
-        margin: const EdgeInsets.only(right: 10),
+        margin: const EdgeInsets.only(right: 10, bottom: 10),
         width: 50,
         height: 50,
         decoration: BoxDecoration(

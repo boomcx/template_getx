@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:template_getx/app.dart';
 import 'package:template_getx/common/extensions/custom_scroll_extension.dart';
+import 'common/tools/mob_util.mixin.dart';
 import 'service.dart';
 
 void main() async {
@@ -29,8 +31,25 @@ _initAsync() async {
   await Hive.openBox('app');
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp>
+    with SingleTickerProviderStateMixin, MobUtilMixin {
+  @override
+  void initState() {
+    super.initState();
+    // handleIncomingLinks();
+    // handleInitialUri();
+    // getClipboard();
+    // SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+    //   mobLinkMount();
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,5 +87,11 @@ class MyApp extends StatelessWidget {
         return Toast.init(context, child!);
       },
     );
+  }
+
+  @override
+  void dispose() {
+    // subscription?.cancel();
+    super.dispose();
   }
 }

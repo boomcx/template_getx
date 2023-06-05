@@ -19,5 +19,7 @@ export './common/widgets/primary_button.dart';
 
 export './common/refresh/refresh.dart';
 
-
 final logger = Logger();
+
+/// deep link
+const String kUrlScheme = 'chanyetong://handi';
