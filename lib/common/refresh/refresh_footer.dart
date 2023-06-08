@@ -1,5 +1,5 @@
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
-import 'package:template_getx/app.dart';
 import '../widgets/app_progress_indicator.dart';
 
 class RefreshFooter extends Footer {

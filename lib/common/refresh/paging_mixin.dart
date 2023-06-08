@@ -95,14 +95,17 @@ mixin PagingMixin<T> {
       }
       dataList.addAll(list);
       // 更新列表
-      _state.value = _state.value.copyWith(items: dataList);
+      _state.value = _state.value.copyWith(
+        items: dataList,
+        isStartEmpty: page == _initPage && list.isEmpty,
+      );
 
       // 默认没有总数量 `maxCount`，用获取当前数据列表是否有值判断
       // 默认有总数量 `maxCount`, 则判断当前请求数据list+历史数据items是否小于总数
       // bool hasNoMore = !((items.length + list.length) < maxCount);
       bool isNoMore = true;
       if (maxCount != null) {
-        isNoMore = itemCount >= maxCount;
+        isNoMore = page > 1; // itemCount >= maxCount;
       }
       var state = IndicatorResult.success;
       if (isNoMore) {

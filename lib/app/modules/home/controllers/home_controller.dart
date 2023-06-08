@@ -17,6 +17,7 @@ class HomeController extends GetxController with PagingMixin<VideoList> {
     try {
       final data = await NetRepository.client.videoList(page, 12);
       await Future.delayed(const Duration(seconds: 1));
+      // endLoad([], maxCount: data.total);
       endLoad(data.list as List<VideoList>, maxCount: data.total);
     } catch (e) {
       formatError(e);
