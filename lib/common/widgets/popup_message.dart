@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class _PopupConfig {
@@ -14,12 +16,16 @@ class _PopupConfig {
   /// 三角的大小
   final Size size;
 
+  /// 圆角
+  final double radius;
+
   _PopupConfig({
     required this.context,
     // this.padding = 10,
-    required this.margin,
-    required this.size,
-    required this.bgColor,
+    this.margin = const EdgeInsets.all(5),
+    this.size = const Size(7, 7),
+    this.bgColor = Colors.white,
+    this.radius = 4,
   });
 }
 
@@ -30,20 +36,43 @@ class PopupMessage extends StatefulWidget {
     required this.content,
     this.padding = const EdgeInsets.all(10),
     this.margin = const EdgeInsets.all(5),
-    this.size = const Size(7, 7),
     this.bgColor = Colors.white,
+    this.size = const Size(7, 7),
     this.maxWidth = 200,
+    this.radius = 4,
     this.barrierColor = const Color(0x05000000),
+    this.onPreShow,
   });
 
+  /// 默认显示内容
   final Widget child;
+
+  /// 弹框显示内容
   final Widget content;
+
+  /// 限制弹框最大显示宽度
   final double maxWidth;
+
+  /// 弹框內间距
   final EdgeInsets padding;
+
+  /// 弹框与`child`内容之间的距离
   final EdgeInsets margin;
+
+  /// 弹框三角大小
   final Size size;
+
+  /// 弹框圆角
+  final double radius;
+
+  /// 遮罩背景色
   final Color barrierColor;
+
+  /// 弹框背景色
   final Color bgColor;
+
+  /// 设置是否需要显示弹窗内容
+  final FutureOr<bool> Function()? onPreShow;
 
   @override
   State<PopupMessage> createState() => _PopupMessageState();
@@ -62,6 +91,7 @@ class _PopupMessageState extends State<PopupMessage> {
       margin: widget.margin,
       size: widget.size,
       bgColor: widget.bgColor,
+      radius: widget.radius,
     );
 
     super.initState();
@@ -123,7 +153,19 @@ class _PopupMessageState extends State<PopupMessage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _showText,
+      behavior: HitTestBehavior.translucent,
+      onTap: () async {
+        if (widget.onPreShow == null) {
+          _showText();
+          return;
+        }
+        final state = await widget.onPreShow?.call();
+        if (state == true) {
+          Future.delayed(Duration.zero, () {
+            _showText();
+          });
+        }
+      },
       child: widget.child,
     );
   }
@@ -195,7 +237,7 @@ class _PopupMsgPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Offset.zero & size;
-    final rrect = RRect.fromRectAndRadius(rect, const Radius.circular(4));
+    final rrect = RRect.fromRectAndRadius(rect, Radius.circular(config.radius));
 
     final paint = Paint()
       ..strokeWidth = 2
@@ -233,6 +275,7 @@ class _PopupMsgPainter extends CustomPainter {
           5,
           false);
     }
+
     canvas.drawPath(path, paint);
   }
 

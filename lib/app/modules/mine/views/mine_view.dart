@@ -11,7 +11,7 @@ class MineView extends GetView<MineController> {
 
   @override
   Widget build(BuildContext context) {
-    const schemeUrl = 'http://8.130.10.201/datax-ui/index1.html';
+    const schemeUrl = '';
 
     return Scaffold(
         appBar: const AAppBar(

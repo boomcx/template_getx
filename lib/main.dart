@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,12 +42,9 @@ class _MyAppState extends State<MyApp>
   @override
   void initState() {
     super.initState();
-    // handleIncomingLinks();
-    // handleInitialUri();
-    // getClipboard();
-    // SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-    //   mobLinkMount();
-    // });
+    // 使用`mobSDK`前，必须在用户同意隐私协议时设置
+    // 避免部分功能无法使用
+    // policyGrant();
   }
 
   @override
@@ -87,11 +83,5 @@ class _MyAppState extends State<MyApp>
         return Toast.init(context, child!);
       },
     );
-  }
-
-  @override
-  void dispose() {
-    // subscription?.cancel();
-    super.dispose();
   }
 }

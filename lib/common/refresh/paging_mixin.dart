@@ -50,14 +50,14 @@ mixin PagingMixin<T> {
     _page = initPage;
   }
 
-  /// 数据加载
-  FutureOr loadData(int page);
+  /// 获取数据
+  FutureOr fetchData(int page);
 
   /// 刷新数据
   Future onRefresh() async {
     _refreshComplater = Completer();
     _page = _initPage;
-    loadData(_page);
+    fetchData(_page);
     return _refreshComplater!.future;
   }
 
@@ -65,7 +65,7 @@ mixin PagingMixin<T> {
   Future onLoad() async {
     _refreshComplater = Completer();
     _page++;
-    loadData(_page);
+    fetchData(_page);
     return _refreshComplater!.future;
   }
 

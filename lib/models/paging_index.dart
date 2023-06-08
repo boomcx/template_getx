@@ -8,6 +8,7 @@ class PagingIndex<T> with _$PagingIndex {
     @Default(0) int total,
     @Default([]) List<T> list,
   }) = _PagingIndex;
+
   factory PagingIndex.fromJson(
           Map<String, Object?> json, T Function(dynamic json) fromJsonT) =>
       _$PagingIndexFromJson(json, fromJsonT);
