@@ -108,6 +108,7 @@ class EmptyDataPlaceholder extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               icon,
+              const SizedBox(height: 4),
               if (tip != null)
                 Text(
                   tip!,
@@ -138,7 +139,7 @@ class LoadingPlaceholder extends StatelessWidget {
         children: [
           AppProgressIndicator.color(
             Theme.of(context).primaryColor,
-            size: 40,
+            size: 30,
           ),
         ],
       ),

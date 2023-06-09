@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -17,14 +19,18 @@ class HomeView extends GetView<HomeController> {
       ),
       body: SpeedyPagedList<VideoList>.separator(
         controller: controller,
-        refreshOnStart: false,
+        refreshOnStart: true,
         itemBuilder: (context, index, item) {
-          return Text(item.title);
+          return GestureDetector(
+              onTap: () {
+                Get.to(() => const MyWidget());
+              },
+              child: Text(item.title));
         },
         separatorBuilder: (context, index) => const Divider(),
       ),
       // body: PullRefreshControl(
-      //   pagingMixin: controller,
+      //   pagingMixin: controller,  <--- mixin pagingMixin类型
       //   childBuilder: (context, physics) {
       //     return ListView.separated(
       //       physics: physics,
@@ -38,5 +44,36 @@ class HomeView extends GetView<HomeController> {
       //   },
       // ),
     );
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> with PagingMixin {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const AAppBar(
+        title: 'mixin widget',
+      ),
+      body: SpeedyPagedList.separator(
+        controller: this,
+        itemBuilder: (context, index, item) {
+          return Text('data $index');
+        },
+        separatorBuilder: (context, index) => const Divider(),
+      ),
+    );
+  }
+
+  @override
+  FutureOr fetchData(int page) async {
+    await Future.delayed(const Duration(seconds: 2));
+    endLoad([1, 2, 2, 2, 2, 2]);
   }
 }

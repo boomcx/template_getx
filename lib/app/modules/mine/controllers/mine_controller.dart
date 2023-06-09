@@ -13,6 +13,6 @@ class MineController extends GetxController with PagingMixin {
   @override
   FutureOr fetchData(int page) async {
     await Future.delayed(const Duration(seconds: 2));
-    endLoad([]);
+    endLoad([1, 2, 2, 2, 2, 2]);
   }
 }
