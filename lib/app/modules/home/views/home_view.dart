@@ -23,7 +23,8 @@ class HomeView extends GetView<HomeController> {
         itemBuilder: (context, index, item) {
           return GestureDetector(
               onTap: () {
-                Get.to(() => const MyWidget());
+                // Get.to(() => const MyWidget());
+                Get.toNamed(Routes.LOGIN, preventDuplicates: false);
               },
               child: Text(item.title));
         },

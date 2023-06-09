@@ -1,14 +1,16 @@
-// ignore_for_file: constant_identifier_names
-
 import 'package:get/get.dart';
-import 'package:template_getx/tabbar.dart';
 
+import '../../tabbar.dart';
+import '../modules/find/bindings/find_binding.dart';
+import '../modules/find/views/find_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/mine/bindings/mine_binding.dart';
 import '../modules/mine/views/mine_view.dart';
+
+// ignore_for_file: constant_identifier_names
 
 part 'app_routes.dart';
 
@@ -20,6 +22,8 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.LOGIN,
+      preventDuplicates: false,
+      preventDuplicateHandlingMode: PreventDuplicateHandlingMode.recreate,
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
@@ -42,6 +46,18 @@ class AppPages {
         body: MineView(),
       ),
       binding: MineBinding(),
+    ),
+    GetPage(
+      name: _Paths.FIND,
+      page: () => const FindView(),
+      binding: FindBinding(),
+      children: [
+        GetPage(
+          name: _Paths.FIND,
+          page: () => const FindView(),
+          binding: FindBinding(),
+        ),
+      ],
     ),
   ];
 }
