@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 import 'package:template_getx/app.dart';
 import 'package:star_menu/star_menu.dart';
-import 'package:template_getx/common/tools/mob_util.mixin.dart';
 import 'package:template_getx/services/app.dart';
 
 enum TabbarType { home, mine }
