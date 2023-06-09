@@ -52,8 +52,8 @@ dependencies:
   star_menu: ^3.1.4
   event_bus: ^2.0.0
   logger: ^1.2.2
-  # mobcommonlib: ^1.1.4
-  # moblink: ^3.4.6
+  mobcommonlib: ^1.1.4
+  moblink: ^3.4.6
   # 启动图：flutter pub run flutter_native_splash:create
   flutter_native_splash: ^2.3.0
 

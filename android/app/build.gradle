@@ -26,16 +26,16 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 // 添加插件
-// apply plugin: 'com.mob.sdk'
-// // 在MobSDK的扩展中注册MobLink的相关信息
-// MobSDK {
-//     appKey ""
-//     appSecret ""
-//     MobLink {
-//         uriScheme "scheme://test"
-//         appLinkHost "---"
-//     }
-// }
+apply plugin: 'com.mob.sdk'
+// 在MobSDK的扩展中注册MobLink的相关信息
+MobSDK {
+    appKey ""
+    appSecret ""
+    MobLink {
+        uriScheme "scheme://test"
+        appLinkHost "---"
+    }
+}
 
 android {
     namespace "com.boomcx.template_getx"
