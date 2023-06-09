@@ -8,7 +8,7 @@ class PagingMixinController<T> extends ValueNotifier<PagingMixinData<T>> {
   List<T> get items => value.items;
   int get itemCount => items.length;
 }
-// flutter 关于easy_refresh更便利的打开方式
+
 class PagingMixinData<T> {
   // 列表数据
   final List<T> items;
