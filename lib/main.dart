@@ -6,7 +6,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:template_getx/app.dart';
 import 'package:template_getx/common/extensions/custom_scroll_extension.dart';
-import 'common/tools/mob_util.mixin.dart';
 import 'service.dart';
 
 void main() async {
@@ -37,8 +36,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp>
-    with SingleTickerProviderStateMixin, MobUtilMixin {
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();

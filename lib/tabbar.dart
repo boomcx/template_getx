@@ -23,7 +23,7 @@ class TabbarScaffold extends StatefulWidget {
   State<TabbarScaffold> createState() => _TabbarScaffoldState();
 }
 
-class _TabbarScaffoldState extends State<TabbarScaffold> with MobUtilMixin {
+class _TabbarScaffoldState extends State<TabbarScaffold> {
   int _index = -1;
   List<Widget> _children = [];
 
@@ -53,9 +53,9 @@ class _TabbarScaffoldState extends State<TabbarScaffold> with MobUtilMixin {
     super.initState();
     _children = List.generate(_tabList.length, (index) => const SizedBox());
     _updateChildren();
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-      mobLinkMount();
-    });
+    // SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+    //   mobLinkMount();
+    // });
   }
 
   void _updateChildren() {

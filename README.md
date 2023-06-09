@@ -1,6 +1,6 @@
 # template_getx
 
-A flutter template project from getx.
+尽量整合一套开箱即用的项目框架，一些好的方法或者想法也会持续更新进来。
 
 ## Getting Started
 
