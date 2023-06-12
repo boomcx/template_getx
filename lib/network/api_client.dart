@@ -15,7 +15,7 @@ abstract class ApiClient {
 
   /// 退出登录
   @DELETE('/user/logout')
-  Future<void> logout();
+  Future<void> logout(); 
 
   @POST('/action/openapi/token')
   Future<void> token(@Body() TokenParams params);

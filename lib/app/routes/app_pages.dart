@@ -9,6 +9,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/mine/bindings/mine_binding.dart';
 import '../modules/mine/views/mine_view.dart';
+import '../modules/news_detail/bindings/news_detail_binding.dart';
+import '../modules/news_detail/views/news_detail_view.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -22,8 +24,6 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.LOGIN,
-      preventDuplicates: false,
-      preventDuplicateHandlingMode: PreventDuplicateHandlingMode.recreate,
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
@@ -58,6 +58,11 @@ class AppPages {
           binding: FindBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.NEWS_DETAIL,
+      page: () => NewsDetailView(id: '${Get.parameters['id']}'),
+      binding: NewsDetailBinding(),
     ),
   ];
 }

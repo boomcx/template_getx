@@ -24,7 +24,7 @@ class HomeView extends GetView<HomeController> {
           return GestureDetector(
               onTap: () {
                 // Get.to(() => const MyWidget());
-                Get.toNamed(Routes.LOGIN, preventDuplicates: false);
+                Get.toNamed(Routes.NEWS_DETAIL, parameters: {'id': '1515'});
               },
               child: Text(item.title));
         },

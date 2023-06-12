@@ -6,7 +6,7 @@ import 'package:template_getx/models.dart';
 
 class HomeController extends GetxController with PagingMixin<VideoList> {
   /// 标记首次为数据空
-  bool tag = false;
+  bool tag = true;
 
   @override
   void onInit() {
@@ -14,7 +14,7 @@ class HomeController extends GetxController with PagingMixin<VideoList> {
     // initPaging(isLoadMore: false);
     super.onInit();
   }
-  
+
   @override
   FutureOr fetchData(int page) async {
     try {

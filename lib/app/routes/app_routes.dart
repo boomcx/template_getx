@@ -9,6 +9,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const MINE = _Paths.MINE;
   static const FIND = _Paths.FIND;
+  static const NEWS_DETAIL = _Paths.NEWS_DETAIL;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const HOME = '/home';
   static const MINE = '/mine';
   static const FIND = '/find';
+  static const NEWS_DETAIL = '/news-detail';
 }
