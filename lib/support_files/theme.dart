@@ -133,6 +133,7 @@ const _appColors = AppColors(
   shimmerHighlightColor: Color(0xFFCCCCCC),
 );
 
+/// 默认主题配置
 final appThemeData = ThemeData(
   primaryColor: _appColors.primary,
   canvasColor: Colors.transparent,

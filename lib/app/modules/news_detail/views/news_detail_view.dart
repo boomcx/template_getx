@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:template_getx/app/routes/app_pages.dart';
+import 'package:template_getx/app.dart';
 
 import '../controllers/news_detail_controller.dart';
 
@@ -21,21 +21,15 @@ class NewsDetailView extends GetView<NewsDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('NewsDetailView'),
-        centerTitle: true,
-      ),
+      appBar: const AAppBar(title: 'NewsDetailView'),
       body: Center(
-        child: GetBuilder<NewsDetailController>(
-          tag: id,
-          builder: (controller) => ElevatedButton(
-            onPressed: () {
-              Get.toNamed(Routes.NEWS_DETAIL, parameters: {
-                'id': Random().nextInt(100).toString(),
-              });
-            },
-            child: Text("NewsDetailView ${controller.title}"),
-          ),
+        child: ElevatedButton(
+          onPressed: () {
+            Get.toNamed(Routes.NEWS_DETAIL, parameters: {
+              'id': Random().nextInt(100).toString(),
+            });
+          },
+          child: Text("NewsDetailView ${controller.title}"),
         ),
       ),
     );

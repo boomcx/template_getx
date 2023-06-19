@@ -597,22 +597,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
-  mobcommonlib:
-    dependency: "direct main"
-    description:
-      name: mobcommonlib
-      sha256: eaa0585e484ee75abf499824b69f16b67b5fc832b0fd14efc34ceee34b0fea3a
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.4"
-  moblink:
-    dependency: "direct main"
-    description:
-      name: moblink
-      sha256: bdfbca5032c05339ea9f9f5a3c1bc53147ccfb32b2205917f843bc5364189b46
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.4.6"
   octo_image:
     dependency: transitive
     description:

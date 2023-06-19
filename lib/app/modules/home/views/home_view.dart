@@ -25,6 +25,7 @@ class HomeView extends GetView<HomeController> {
               onTap: () {
                 // Get.to(() => const MyWidget());
                 Get.toNamed(Routes.NEWS_DETAIL, parameters: {'id': '1515'});
+                // controller.insertItems();
               },
               child: Text(item.title));
         },

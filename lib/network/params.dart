@@ -1,5 +1,4 @@
 // 接口请求参数
-
 import 'package:json_annotation/json_annotation.dart';
 part 'params.g.dart';
 

@@ -122,4 +122,13 @@ mixin PagingMixin<T> {
     // 更新列表
     _state.value = _state.value.copyWith(items: list);
   }
+
+  /// 如果本地需要修改列表信息
+  /// 可以参考这里: [updateItems]
+  void insertItems() {
+    // 更新列表
+    final dataList = List.of(items);
+    dataList.insert(0, items.first);
+    _state.value = _state.value.copyWith(items: dataList);
+  }
 }

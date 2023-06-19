@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 
 import '../services/user.dart';
 
+/// 请求拦截相关的处理
 class NetInterceptor extends Interceptor {
   NetInterceptor();
 
