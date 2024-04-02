@@ -1,7 +1,8 @@
 # template_getx
 
-!! 后续更新到 
+！！！ 模版项目迭代地址，当前项目停止更新。
 [flutter 基于get的模版项目（可通过.bat自定义）- 掘金](https://juejin.cn/post/7248788659930939447)
+
 [git](https://github.com/boomcx/template_batch.git)
 
 
