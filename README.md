@@ -1,5 +1,10 @@
 # template_getx
 
+!! 后续更新到 
+[flutter 基于get的模版项目（可通过.bat自定义）- 掘金](https://juejin.cn/post/7248788659930939447)
+[git](https://github.com/boomcx/template_batch.git)
+
+
 尽量整合一套开箱即用的项目框架，一些好的方法或者想法也会持续更新进来。
 
 ## Getting Started
